@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Produtos e Transações - Gardening</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Vincula o arquivo de estilo externo -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: rgb(153, 197, 177);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .container {
+            margin: 20px;
+            width: 80%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color:rgb(153, 197, 177);
+            color: #fff;
+        }
+
+        footer {
+            background-color: rgb(153, 197, 177);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+
+    <h1>Listar Produtos</h1>
+    <div class="return-button">
+        <a href="admin.html"><button>Voltar</button></a>
+    </div>
+
+    <div id="listaProdutos"></div>
+    <div class="container">
+        <section id="product-list">
+            <h2>Lista de Produtos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome do Produto</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody id="product-table-body"> <!-- Adicionei um id para referenciar no script -->
+                    <!-- Linhas serão adicionadas dinamicamente aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="transaction-list">
+            <h2>Lista de Transações</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID da Transação</th>
+                        <th>Data</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-table-body"> <!-- Adicionei um id para referenciar no script -->
+                    <!-- Linhas serão adicionadas dinamicamente aqui -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Gardening - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Faz uma requisição AJAX para obter a lista de produtos
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:3000/produtos', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Manipula a resposta e exibe os produtos na tabela
+                    var produtos = JSON.parse(xhr.responseText);
+                    var productTableBody = document.getElementById('product-table-body');
+                    productTableBody.innerHTML = ''; // Limpa as linhas existentes
+
+                    produtos.forEach(function(produto) {
+                        // Adiciona uma nova linha para cada produto
+                        productTableBody.innerHTML += `
+                            <tr>
+                                <td>${produto.id}</td>
+                                <td>${produto.nome}</td>
+                                <td>${produto.descricao}</td>
+                                <td>${produto.preco}</td>
+                            </tr>
+                        `;
+                    });
+                }
+            };
+            xhr.send();
+        });
+    </script>
+
+</body>
+</html>

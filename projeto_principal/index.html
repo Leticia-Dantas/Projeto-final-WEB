@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Definindo o conjunto de caracteres da página -->
+    <meta charset="UTF-8">
+
+    <!-- Configurando a visualização em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título da página exibido na barra de título do navegador -->
+    <title>Gardening - Página Inicial</title>
+
+    <!-- Importando o arquivo de estilos externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Cabeçalho da página -->
+    <header>
+        <!-- Logotipo da Gardening -->
+        <img src="https://i.pinimg.com/736x/80/6c/c4/806cc417819b393047a2316c537075ef.jpg" alt="Gardening Logo" class="logo">
+
+        <!-- Barra de navegação -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="products.html">Produtos</a></li>
+                <li><a href="catalog.html">Catálogo de Plantas</a></li>
+                <li><a href="premium.html">Parte Premium</a></li>
+                <li><a href="about.html">Sobre Nós</a></li>
+                <li class="login"><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal da página -->
+    <main>
+        <!-- Seção de Recursos Principais -->
+        <section id="features">
+            <h2>Recursos Principais</h2>
+            <div class="feature">
+                <h3>Monitoramento de Solo</h3>
+                <p>Acompanhe a umidade e fertilidade do solo em tempo real.</p>
+                <img src="https://www.fxsondagens.com.br/imagens/monitoramento-ambiental-de-solo/monitoramento-ambiental-de-solo.jpg" alt="Imagem 1" width="500" height="350">
+                <img src="https://trial.com.br/wp-content/uploads/2021/07/2021-07-27-alteracao-qualidade-do-solo.jpg" alt="Imagem 2" width="500" height="350">
+            </div>
+            <div class="feature">
+                <h3>Dicas Personalizadas</h3>
+                <p>Receba orientações específicas para cada planta em seu jardim.</p>
+                <img src="https://amoplantar.com.br/wp-content/uploads/2020/12/como-plantar-dicas-de-plantio-para-quem-esta-aprendendo-a-plantar.jpg" alt="Imagem 3"width="500" height="350">
+                <img src="https://terramagna.com.br/wp-content/uploads/2023/01/Mao-fazendeiro-sementes-solo-TSI-ou-on-farm.jpg" alt="Imagem 4" width="500" height="350">
+            <div class="feature">
+                <h3>Alertas de Pragas</h3>
+                <p>Fique alerta contra pragas e doenças que podem prejudicar suas plantas.</p>
+                <img src="https://s2.glbimg.com/ObA2bjzQM3URrpH6aP2JE7NUvy8=/smart/e.glbimg.com/og/ed/f/original/2019/10/11/pragas-jardim-pulgao.jpg" alt="Imagem 5"width="500" height="350">
+                <img src="https://f.i.uol.com.br/fotografia/2023/04/12/168132957264370da417d81_1681329572_3x2_xl.jpg" alt="Imagem 6" width="500" height="350">
+            </div>
+       
+            <h3>Novidades</h3>
+            <div class="news-images">
+                <img src="https://cdn.awsli.com.br/800x800/1334/1334796/produto/118724132/8c8b74f722.jpg" alt="Imagem 7" width="300" height="250">
+                <img src="https://t2.uc.ltmcdn.com/pt/posts/4/1/9/como_cuidar_da_suculenta_rosa_de_pedra_28914_600_square.jpg" alt "Imagem 8" width="300" height="250">
+                <img src="https://s2.glbimg.com/U5VsYG0UHHKLa0_zL6fkq2_4AxM=/620x466/smart/e.glbimg.com/og/ed/f/original/2021/04/01/tudo-sobre-dedo-de-moca-suculenta-pendente-que-e-sucesso-garantido-1.jpg" alt="Imagem 9" width="300" height="250"><br>
+                <img src="data:image/jpeg;base64,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" alt="Imagem 10" width="300" height="250">
+                <img src="https://imagens-revista.vivadecora.com.br/uploads/2021/11/Aprenda-como-cultivar-a-suculenta-orelha-de-elefante.-Fonte-Planta-Sonya.jpg" alt="Imagem 11" width="300" height="250">
+                <img src="https://s2-casavogue.glbimg.com/hXE5gomKHfwbF2_ZuO8RWqS-G1k=/0x0:1920x1535/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_d72fd4bf0af74c0c89d27a5a226dbbf8/internal_photos/bs/2023/i/U/d3CdLsR92uWIrkeCH8pw/como-fazer-rosa-do-deserto-florir2.jpg" alt="Imagem 12" width="300" height="250">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Gardening</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

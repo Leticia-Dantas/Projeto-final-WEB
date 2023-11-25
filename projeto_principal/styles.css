@@ -1,0 +1,161 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+img:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+}
+
+nav {
+    margin-top: 180px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo {
+    width: 145px;
+    margin: 20px auto; /* Alterado para centralizar a logo verticalmente */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+header {
+    background-color: rgb(153, 197, 177);
+    color: #636363;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+section#home {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(17, 0, 0, 0.096);
+}
+
+#banner {
+    background-color: rgb(153, 197, 177);
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 0;
+}
+
+#banner h2 {
+    font-size: 2rem;
+}
+
+#banner p {
+    font-size: 1.2rem;
+}
+
+#features {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature {
+    text-align: center;
+    margin: 20px;
+}
+
+.feature img {
+    max-width: 100%;
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    color: rgb(153, 197, 177);
+}
+
+.feature p {
+    font-size: 1.2rem;
+}
+
+#testimonials {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(2, 255, 192, 0.048);
+}
+
+.testimonial {
+    text-align: center;
+    margin: 20px;
+}
+
+.testimonial p {
+    font-size: 1.2rem;
+}
+
+.testimonial em {
+    font-weight: bold;
+}
+
+/* Adicione a classe centered-form ao seu CSS existente */
+.centered-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Adicione qualquer estilo adicional necessário para o formulário de cadastro */
+.centered-form h2,
+.centered-form label,
+.centered-form input,
+.centered-form button {
+    margin: 10px 0;
+}

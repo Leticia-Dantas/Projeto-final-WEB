@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardening - Página Inicial</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Adicione este estilo para centralizar o formulário e adicionar espaço acima */
+        .centered-form {
+            max-width: 400px;
+            margin: 35px auto; /* Adicionei uma margem acima do formulário */
+            text-align: center;
+        }
+    
+        /* Adicione este estilo para corrigir a exibição da logo e barra superior */
+        header {
+            background-color: rgb(153, 197, 177);
+            padding: 90px 0;
+            text-align: center;
+        }
+    
+        header .logo img {
+            max-width: 100%;
+            max-height: 160px; /* Ajuste a altura máxima conforme necessário */
+        }
+    
+        body {
+            margin: 0; /* Define as margens externas do corpo da página como 0 */
+            padding: 0; /* Define o preenchimento interno do corpo da página como 0 */
+            font-family: Arial, sans-serif; /* Define a família de fontes para o corpo da página */
+            background-color: #f4f4f4; /* Define a cor de fundo para o corpo da página */
+            align-items: center; /* Centraliza os itens verticalmente no eixo transversal (Y) */
+            justify-content: center; /* Centraliza os itens horizontalmente no eixo principal (X) */
+            height: 100vh; /* Define a altura do corpo da página como 100% da altura da tela (viewport height) */
+        }
+        
+        .login-form {
+            margin-top: 30px; /* Define a margem superior do formulário de login */
+            margin-bottom: 10px; /* Define a margem inferior do formulário de login */
+            border: 1px solid #ccc; /* Adiciona uma borda ao redor do formulário */
+            padding: 20px; /* Adiciona preenchimento interno ao formulário */
+            border-radius: 8px; /* Adiciona cantos arredondados ao formulário */
+            text-align: center; /* Centraliza o conteúdo do formulário no centro */
+            justify-content: center; /* Centraliza o conteúdo no eixo transversal (Y) */
+            height: 100vh; /* Define a altura do formulário como 100% da altura da tela (viewport height) */
+        }
+        
+        .login-form label {
+            display: block; /* Faz com que os rótulos ocupem uma linha inteira */
+            margin-bottom: 10px; /* Adiciona espaçamento inferior aos rótulos */
+            text-align: center; /* Alinha o texto dos rótulos à esquerda */
+        }
+        
+        .login-form input {
+            width: 40%; /* Define a largura dos campos de entrada como 40% */
+            padding: 10px; /* Adiciona preenchimento interno aos campos de entrada */
+            margin-bottom: 15px; /* Adiciona espaçamento inferior aos campos de entrada */
+            box-sizing: border-box; /* Garante que a largura inclui a borda e o preenchimento */
+            margin: 0 auto; /* Centraliza os campos de entrada no centro */
+            display: block; /* Faz com que os campos de entrada ocupem uma linha inteira */
+        }
+        
+        .login-form button {
+            width: 20%; /* Define a largura do botão como 80% */
+            padding: 10px; /* Adiciona preenchimento interno ao botão */
+            background-color: rgb(153, 197, 177); /* Define a cor de fundo do botão */
+            color: #fff; /* Define a cor do texto do botão como branco */
+            border: none; /* Remove a borda do botão */
+            border-radius: 4px; /* Adiciona cantos arredondados ao botão */
+            cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
+            display: block; /* Faz com que o botão ocupe uma linha inteira */
+            margin: 0 auto; /* Centraliza o botão no centro */
+        }
+        .login-form {
+         
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .login-form h2 {
+            margin-bottom: 20px; /* Adiciona uma margem inferior ao título */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/80/6c/c4/806cc417819b393047a2316c537075ef.jpg" alt="Gardening Logo">
+        </div>
+        <p></p>
+    </header>
+
+    <main>
+        <section id="login">
+            <div class="container"> 
+                <h2>Login</h2>
+    
+                <!-- Formulário de login -->
+                <div class="login-form">
+                    <form id="login-form" class="centered-form" action="http://localhost:3000/login" method="post">
+    
+                        <label for="loginEmail">Email:</label>
+                        <input type="text" id="loginEmail" name="loginEmail" required>
+    
+                        <br><label for="loginSenha">Senha:</label>
+                        <input type="password" id="loginSenha" name="loginSenha" required>
+    
+                        <button type="button" onclick="login()">Entrar</button>
+                        <p>Não tem conta? <a href="cadastro.html">Cadastre-se já!</a></p>
+                    </form>
+                </main>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const senha = document.getElementById('loginSenha').value;
+
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, senha }),
+            });
+
+            const data = await response.json();
+            console.log(data);
+
+            if (data.success) {
+                alert('Login bem-sucedido!');
+                
+                window.location.href = 'index.html';
+            } else {
+                alert('Credenciais inválidas.');
+            }
+        }
+    </script>
+</body>
+
+</html>

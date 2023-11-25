@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Plantas - Gardening</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Vincula o arquivo de estilo externo -->
+    <style>
+        /* Adiciona algum estilo adicional específico para o formulário de edição se necessário */
+        .edit-form {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            display: none; /* Inicialmente oculto */
+        }
+
+        .edit-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .edit-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .edit-form button {
+            background-color: rgb(153, 197, 177);
+            color: #fff;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="https://i.pinimg.com/736x/80/6c/c4/806cc417819b393047a2316c537075ef.jpg" alt="Gardening Logo" class="logo">
+        <!-- Inclui um logotipo com o caminho da imagem e uma classe "logo" -->
+        <h1></h1> <!-- (Não foi fornecido um conteúdo para o elemento <h1>, você pode adicionar um título se necessário) -->
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="products.html">Produtos</a></li>
+                <li><a href="catalog.html">Catálogo de Plantas</a></li>
+                <li><a href="premium.html">Parte Premium</a></li>
+                <li><a href="about.html">Sobre Nós</a></li>
+                <li class="login"><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Editar Produto</h1>
+    <div class="return-button">
+        <a href="admin.html"><button>Voltar</button></a>
+        <section id="plant-catalog">
+            <div class="container">
+            </div>
+    <form id="editForm">
+        <label for="productId">ID do Produto:</label>
+        <input type="number" id="productId" name="productId" required>
+        <br>
+
+        <label for="productName">Nome do Produto:</label>
+        <input type="text" id="productName" name="productName" required>
+        <br>
+
+        <label for="productDescription">Descrição do Produto:</label>
+        <textarea id="productDescription" name="productDescription" required></textarea>
+        <br>
+
+        <label for="productPrice">Preço do Produto:</label>
+        <input type="number" step="0.01" id="productPrice" name="productPrice" required>
+        <br>
+
+        <button type="button" onclick="editarProduto()">Editar Produto</button>
+    </form>
+
+    <script>
+        async function editarProduto() {
+            const idProduto = document.getElementById('productId').value;
+            const nomeProduto = document.getElementById('productName').value;
+            const descricaoProduto = document.getElementById('productDescription').value;
+            const precoProduto = document.getElementById('productPrice').value;
+
+            try {
+                const resposta = await fetch(`http://localhost:3000/produtos/${idProduto}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        nome: nomeProduto,
+                        descricao: descricaoProduto,
+                        preco: precoProduto,
+                    }),
+                });
+
+                const dados = await resposta.json();
+
+                if (resposta.ok) {
+                    alert('Produto editado com sucesso');
+                    // Você pode redirecionar para outra página ou atualizar a interface do usuário conforme necessário.
+                } else {
+                    alert(`Erro: ${dados.message}`);
+                }
+            } catch (erro) {
+                console.error('Erro:', erro);
+                alert('Ocorreu um erro ao editar o produto.');
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto - Gardening</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Vincula o arquivo de estilo externo -->
+    <style>
+        /* Adiciona algum estilo adicional específico para o formulário de cadastro se necessário */
+        .add-form {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .add-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .add-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .add-form button {
+            background-color: rgb(153, 197, 177);
+            color: #fff;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Adiciona estilo para a mensagem */
+        #mensagem {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="https://i.pinimg.com/736x/80/6c/c4/806cc417819b393047a2316c537075ef.jpg" alt="Gardening Logo" class="logo">
+        <h1></h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="products.html">Produtos</a></li>
+                <li><a href="catalog.html">Catálogo de Plantas</a></li>
+                <li><a href="premium.html">Parte Premium</a></li>
+                <li><a href="about.html">Sobre Nós</a></li>
+                <li class="login"><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="return-button">
+        <a href="admin.html"><button>Voltar</button></a>
+    </div>
+    <section id="add-product">
+        <div class="container">
+            <h2>Cadastrar Produto</h2>
+
+            <div class="add-form">
+                <!-- Adiciona o elemento para exibir mensagens -->
+                <div id="mensagem"></div>
+
+                <form id="registration-form" class="centered-form" action="http://localhost:3000/cadastrar-produto" method="post">
+                    <label for="product-name">Nome do Produto:</label>
+                    <input type="text" id="product-name" name="nome" required>
+
+                    <label for="product-description">Descrição do Produto:</label>
+                    <input type="text" id="product-description" name="descricao" required>
+
+                    <label for="product-price">Preço do Produto:</label>
+                    <input type="text" id="product-price" name="preco" required>
+
+                    <!-- Adicione outros campos conforme necessário -->
+
+                    <button type="submit" name="submit">Cadastrar Produto</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Gardening - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+<script>
+    document.getElementById('registration-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const productNameInput = document.getElementById('product-name');
+        const productDescriptionInput = document.getElementById('product-description');
+        const productPriceInput = document.getElementById('product-price');
+        const mensagemElemento = document.getElementById('mensagem');
+
+        fetch('http://localhost:3000/cadastrar-produto', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome: productNameInput.value,
+                descricao: productDescriptionInput.value,
+                preco: productPriceInput.value
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Limpa os campos após o cadastro bem-sucedido
+                productNameInput.value = '';
+                productDescriptionInput.value = '';
+                productPriceInput.value = '';
+
+                // Verifica se a propriedade 'message' existe
+                const mensagem = data.message ? data.message : 'Produto cadastrado com sucesso';
+                mensagemElemento.innerHTML = `<p style="color: green;">${mensagem}</p>`;
+            } else {
+                // Verifica se a propriedade 'message' existe
+                const mensagem = data.message ? data.message : 'Erro ao cadastrar produto';
+                mensagemElemento.innerHTML = `<p style="color: red;">${mensagem}</p>`;
+            }
+        })
+        .catch(error => console.error(error));
+    });
+</script>
+</body>
+
+</html>
